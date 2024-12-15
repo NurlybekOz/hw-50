@@ -3,8 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<div id="root" class="container">
+
+</div>
+
+<script type="text/babel">
+    const Header = ({logo, webName}) => {
+        return (
+            <div className="header">
+                <a href="#"><img src={logo} className="header-logo" alt={"logo" + webName}/></a>
+                <ul className="header-menu">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Tv Shows</a></li>
+                    <li><a href="#">Movies</a></li>
+                    <li><a href="#">Genre</a></li>
+                </ul>
+
+            </div>
+        );
+    };
+    const Card = ({photo, title, releaseDate, movieTime}) => {
+        return (
+            <div className="card">
+                <img className="card-img" src={photo} alt={'Photo of' + title}/>
+                <h1 className="title">{title}</h1>
+                <p className="date"><strong>{releaseDate}</strong> &bull; {movieTime}m.</p>
+            </div>
+        );
+    };
+    const content = (
+        <>
+            <Header logo="https://img.hdtodayz.to/xxrz/400x400/100/c4/93/c49337aa9c92d6fbf56b6b5830c6849c/c49337aa9c92d6fbf56b6b5830c6849c.png" webName="HDtoday"></Header>
+            <Card title="The Call Of The Wild" releaseDate={2020} movieTime={110} photo="https://i.pinimg.com/736x/0f/a2/8c/0fa28cc3c7b7afc273dc3cbe8d8eeff5.jpg"/>
+            <Card title="Django Unchained" releaseDate={2012} movieTime={165} photo="https://m.media-amazon.com/images/M/MV5BMjIyNTQ5NjQ1OV5BMl5BanBnXkFtZTcwODg1MDU4OA@@._V1_.jpg"/>
+            <Card title="All Quiet On The Western Front" releaseDate={2022} movieTime={148} photo="https://i.pinimg.com/736x/93/66/b2/9366b2276edecff9172008f3c37f9634.jpg"/>
+        </>
+    )
+    ReactDOM.render(content, document.getElementById('root'))
+</script>
 </body>
 </html>
