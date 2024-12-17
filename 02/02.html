@@ -19,7 +19,7 @@
     const Header = ({logo, webName}) => {
         return (
             <div className="header">
-                <a href="#"><img src={logo} className="header-logo" alt={"logo" + webName}/></a>
+                <a href="https://hdtodayz.to/movie?page=8"><img src={logo} className="header-logo" alt={"logo" + webName}/></a>
                 <ul className="header-menu">
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Tv Shows</a></li>
@@ -30,21 +30,57 @@
             </div>
         );
     };
+
+
+    const Sidebar = () => {
+        return (
+            <div className="sidebar">
+                <ul className="sidebar-menu">
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Watchlist</a></li>
+                    <li><a href="#">Favorites</a></li>
+                    <li><a href="#">Settings</a></li>
+                </ul>
+            </div>
+        );
+    };
+    const Footer = ({webName}) => {
+        return (
+            <div className="footer d-flex align-items-center flex-column flex-wrap flex-sm-row justify-content-between py-3 my-4 border-top">
+                <p className="m-0">{webName}</p>
+                    <p className="m-0 text-secondary">HDToday does not store any files on our server, we only linked to the media which is hosted on 3rd party services.</p>
+            </div>
+        );
+    };
     const Card = ({photo, title, releaseDate, movieTime}) => {
         return (
             <div className="card">
-                <img className="card-img" src={photo} alt={'Photo of' + title}/>
+                <img className="card-img" src={photo} alt={'Photo of' + {title}}/>
                 <h1 className="title">{title}</h1>
                 <p className="date"><strong>{releaseDate}</strong> &bull; {movieTime}m.</p>
             </div>
         );
-    };
+    }
+    const Main = () => {
+        return (
+            <div className="content">
+                <Sidebar></Sidebar>
+                <div className="cards">
+                    <Card title="The Call Of The Wild" releaseDate={2020} movieTime={110}
+                          photo="https://i.pinimg.com/736x/0f/a2/8c/0fa28cc3c7b7afc273dc3cbe8d8eeff5.jpg"/>
+                <Card title="Django Unchained" releaseDate={2012} movieTime={165} photo="https://m.media-amazon.com/images/M/MV5BMjIyNTQ5NjQ1OV5BMl5BanBnXkFtZTcwODg1MDU4OA@@._V1_.jpg"/>
+                <Card title="The Dark Knight" releaseDate={2008} movieTime={152} photo="https://m.media-amazon.com/images/S/pv-target-images/e9a43e647b2ca70e75a3c0af046c4dfdcd712380889779cbdc2c57d94ab63902.jpg"/>
+                <Card title="All Quiet On The Western Front" releaseDate={2022} movieTime={148} photo="https://i.pinimg.com/736x/93/66/b2/9366b2276edecff9172008f3c37f9634.jpg"/>
+                <Card title="Forrest Gump" releaseDate={1994} movieTime={142} photo="https://m.media-amazon.com/images/S/pv-target-images/f9ddd832d1b566f5b8dd29a4dbc76b7531c420c8c8d9fdfe94eca128bda8e2b1.jpg"/>
+            </div>
+        </div>
+    )
+    }
     const content = (
         <>
             <Header logo="https://img.hdtodayz.to/xxrz/400x400/100/c4/93/c49337aa9c92d6fbf56b6b5830c6849c/c49337aa9c92d6fbf56b6b5830c6849c.png" webName="HDtoday"></Header>
-            <Card title="The Call Of The Wild" releaseDate={2020} movieTime={110} photo="https://i.pinimg.com/736x/0f/a2/8c/0fa28cc3c7b7afc273dc3cbe8d8eeff5.jpg"/>
-            <Card title="Django Unchained" releaseDate={2012} movieTime={165} photo="https://m.media-amazon.com/images/M/MV5BMjIyNTQ5NjQ1OV5BMl5BanBnXkFtZTcwODg1MDU4OA@@._V1_.jpg"/>
-            <Card title="All Quiet On The Western Front" releaseDate={2022} movieTime={148} photo="https://i.pinimg.com/736x/93/66/b2/9366b2276edecff9172008f3c37f9634.jpg"/>
+            <Main></Main>
+            <Footer webName="© HDToday"></Footer>
         </>
     )
     ReactDOM.render(content, document.getElementById('root'))
